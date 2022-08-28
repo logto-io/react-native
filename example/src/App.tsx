@@ -1,19 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from '@logto/react-native';
+import { StyleSheet, View, Button, Text } from 'react-native';
+import { LogtoProvider, useLogto } from '@logto/react-native';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const { isAuthenticated, signIn, signOut } = useLogto();
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <LogtoProvider config={{ appId: 'abc', endpoint: 'https://logto.dev' }}>
+      <View style={styles.container}>
+        <Text>Logto React Native Sample</Text>
+        {isAuthenticated ? 
+          <Button title='Sign In' onPress={() => signIn('io.logto://logto/callback')} /> :
+          <Button title='Sign Out' onPress={() => signOut()} />}
+      </View>
+    </LogtoProvider>
   );
 }
 
