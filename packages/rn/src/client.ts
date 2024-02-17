@@ -62,7 +62,7 @@ export class LogtoClient extends StandardLogtoClient {
               break;
             }
             default: {
-              throw new LogtoNativeClientError('auth_session_failed');
+              throw new LogtoNativeClientError('navigation_purpose_not_supported');
             }
           }
         },
@@ -97,6 +97,20 @@ export class LogtoClient extends StandardLogtoClient {
     this.storage = storage;
   }
 
+  /**
+   * Start the sign-in flow with the specified redirect URI. The URI must be registered in the
+   * Logto Console. It uses `WebBrowser.openAuthSessionAsync` to open the browser and start the
+   * sign-in flow.
+   *
+   * The user will be redirected to that URI after the sign-in flow is completed, and the client
+   * will handle the callback to exchange the authorization code for the tokens.
+   *
+   * @param redirectUri The redirect URI that the user will be redirected to after the sign-in flow is completed.
+   * @param interactionMode The interaction mode to be used for the authorization request. Note it's not
+   * a part of the OIDC standard, but a Logto-specific extension. Defaults to `signIn`.
+   *
+   * @see {@link InteractionMode}
+   */
   override async signIn(redirectUri: string, interactionMode?: InteractionMode): Promise<void> {
     await super.signIn(redirectUri, interactionMode);
 
@@ -105,5 +119,14 @@ export class LogtoClient extends StandardLogtoClient {
     }
 
     await this.handleSignInCallback(this.authSessionResult.url);
+  }
+
+  /**
+   * Revokes all the tokens and cleans up the storage. By default, it will NOT open the browser
+   * to start the sign-out flow for better user experience, and the `postLogoutRedirectUri` will
+   * be ignored.
+   */
+  override async signOut(postLogoutRedirectUri?: string | undefined): Promise<void> {
+    return super.signOut(postLogoutRedirectUri);
   }
 }

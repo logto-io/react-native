@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
+// Replace with your own redirect URI
 const redirectUri = 'io.logto://callback';
 
 const Content = () => {
@@ -49,8 +50,8 @@ const App = () => {
   return (
     <LogtoProvider
       config={{
-        endpoint: 'http://localhost:3002/',
-        appId: 's5sc0ktp6fs0a8rwqod6h',
+        endpoint: 'https://<your-logto-endpoint>',
+        appId: '<your-app-id>',
       }}
     >
       <Content />

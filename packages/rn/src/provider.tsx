@@ -4,14 +4,15 @@ import { LogtoClient, type LogtoNativeConfig } from './client.js';
 import { LogtoContext } from './context.js';
 
 export type LogtoProviderProps = {
+  /** The configuration for the `LogtoClient`. */
   readonly config: LogtoNativeConfig;
-  /**
-   * Whether to enable cache for well-known data. Use sessionStorage by default.
-   * @default false
-   */
   readonly children?: ReactNode;
 };
 
+/**
+ * A provider component to provide the `LogtoContext` which includes the `LogtoClient` instance
+ * with the given configuration.
+ */
 export const LogtoProvider = ({ config, children }: LogtoProviderProps) => {
   const memorizedLogtoClient = useMemo(() => new LogtoClient(config), [config]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);

@@ -1,5 +1,8 @@
 {
   "name": "@logto/rn",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.1.0",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -45,9 +48,6 @@
     "extends": "@silverhand/react"
   },
   "prettier": "@silverhand/eslint-config/.prettierrc",
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
     "@logto/client": "3.0.0-alpha.2",
     "@logto/js": "4.0.0-alpha.2",

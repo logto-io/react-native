@@ -5,6 +5,20 @@ import * as SecureStore from 'expo-secure-store';
 
 import { generateRandomString } from './utils';
 
+/**
+ * A secure storage implementation that uses `expo-secure-store` and
+ * `@react-native-async-storage/async-storage`.
+ *
+ * It encrypts the value using the AES algorithm with a random key and stores the key in the secure
+ * store. The encrypted value is stored in the async storage.
+ *
+ * @remarks
+ * Due to the size limitation of the secure store (2048 bytes), we can only store the encryption
+ * key in the secure store but not the value itself.
+ *
+ * @see {@link https://docs.expo.dev/versions/latest/sdk/securestore/}
+ * @see {@link https://react-native-async-storage.github.io/async-storage/}
+ */
 export class SecureStorage implements Storage<string> {
   constructor(public id: string) {}
 
