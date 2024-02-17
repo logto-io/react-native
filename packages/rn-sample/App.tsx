@@ -8,6 +8,8 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 
 // Replace with your own redirect URI
 const redirectUri = 'io.logto://callback';
+const endpoint = 'https://<your-logto-endpoint>';
+const appId = '<your-app-id>';
 
 const Content = () => {
   const { signIn, signOut, client, isAuthenticated, getIdTokenClaims } = useLogto();
@@ -50,8 +52,8 @@ const App = () => {
   return (
     <LogtoProvider
       config={{
-        endpoint: 'https://<your-logto-endpoint>',
-        appId: '<your-app-id>',
+        endpoint,
+        appId,
       }}
     >
       <Content />
