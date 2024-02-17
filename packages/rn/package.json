@@ -37,8 +37,6 @@
     "@silverhand/ts-config-react": "^5.0.0",
     "@types/react": "~18.2.45",
     "eslint": "^8.56.0",
-    "expo-crypto": "^12.8.0",
-    "expo-web-browser": "^12.8.2",
     "prettier": "^3.2.5",
     "stylelint": "^16.2.1",
     "typescript": "^5.3.3"
@@ -50,13 +48,14 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-    "expo-crypto": "^12.8.0",
-    "expo-web-browser": "^12.8.2"
-  },
   "dependencies": {
     "@logto/client": "3.0.0-alpha.2",
     "@logto/js": "4.0.0-alpha.2",
+    "@react-native-async-storage/async-storage": "^1.22.0",
+    "crypto-es": "^2.1.0",
+    "expo-crypto": "^12.8.0",
+    "expo-secure-store": "^12.8.1",
+    "expo-web-browser": "^12.8.2",
     "js-base64": "^3.7.6"
   }
 }

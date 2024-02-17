@@ -1,53 +1,64 @@
+// eslint-disable-next-line import/no-unassigned-import
 import '@logto/rn/polyfill';
 
+import { LogtoProvider, useLogto, type IdTokenClaims } from '@logto/rn';
 import { StatusBar } from 'expo-status-bar';
+import { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { LogtoProvider, useLogto } from '@logto/rn';
-import { useEffect } from 'react';
 
 const redirectUri = 'io.logto://callback';
 
-function Content() {
-  const { signIn, signOut, client, isAuthenticated, getRefreshToken } = useLogto();
+const Content = () => {
+  const { signIn, signOut, client, isAuthenticated, getIdTokenClaims } = useLogto();
+  const [claims, setClaims] = useState<IdTokenClaims>();
 
   useEffect(() => {
     const get = async () => {
-      const token = await getRefreshToken();
-      console.log('refresh', token);
+      setClaims(await getIdTokenClaims());
     };
 
     if (isAuthenticated) {
-      get();
+      void get();
     }
-  }, [isAuthenticated, getRefreshToken]);
+  }, [isAuthenticated, getIdTokenClaims]);
 
   return (
     <View style={styles.container}>
-      <Text>{client.logtoConfig.appId}</Text>
-      {
-        isAuthenticated ? (
-          <Button title="Sign out" onPress={() => signOut()} />
-        ) : (
-          <Button title="Sign in" onPress={() => signIn(redirectUri)} />
-        )
-      }
+      <Text style={styles.metadata}>App ID: {client.logtoConfig.appId}</Text>
+      {isAuthenticated ? (
+        <>
+          <Text style={styles.title}>Authenticated</Text>
+          {claims &&
+            Object.entries(claims).map(([key, value]) => (
+              <Text key={key}>
+                {key}: {String(value)}
+              </Text>
+            ))}
+          <Button title="Sign out" onPress={async () => signOut()} />
+        </>
+      ) : (
+        <Button title="Sign in" onPress={async () => signIn(redirectUri)} />
+      )}
+      {/* eslint-disable-next-line react/style-prop-object */}
       <StatusBar style="auto" />
     </View>
   );
-}
+};
 
-export default function App() {
-
-
+const App = () => {
   return (
-    <LogtoProvider config={{
-      endpoint: 'http://localhost:3002/',
-      appId: 's5sc0ktp6fs0a8rwqod6h',
-    }}>
+    <LogtoProvider
+      config={{
+        endpoint: 'http://localhost:3002/',
+        appId: 's5sc0ktp6fs0a8rwqod6h',
+      }}
+    >
       <Content />
-      </LogtoProvider>
+    </LogtoProvider>
   );
-}
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
@@ -55,5 +66,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  title: {
+    fontSize: 20,
+    marginBottom: 16,
+  },
+  metadata: {
+    fontSize: 14,
+    marginBottom: 16,
+    fontStyle: 'italic',
+    color: '#666',
   },
 });

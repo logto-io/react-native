@@ -5,12 +5,12 @@ import {
   type InteractionMode,
   Prompt,
   LogtoError,
-} from '@logto/client/lib/shim';
+} from '@logto/client/shim';
 import { decodeIdToken } from '@logto/js';
 import * as WebBrowser from 'expo-web-browser';
 
 import { LogtoNativeClientError } from './errors';
-import { MemoryStorage } from './storage';
+import { SecureStorage } from './storage';
 import { generateCodeChallenge, generateRandomString } from './utils';
 
 const issuedAtTimeTolerance = 300; // 5 minutes
@@ -32,17 +32,17 @@ export type LogtoNativeConfig = LogtoConfig & {
    * between the authentication session and the user’s normal browser session. Whether the request
    * is honored depends on the user’s default web browser.
    *
-   * @default false
+   * @default true
    */
   preferEphemeralSession?: boolean;
 };
 
 export class LogtoClient extends StandardLogtoClient {
-  storage: MemoryStorage;
   authSessionResult?: WebBrowser.WebBrowserAuthSessionResult;
+  protected storage: SecureStorage;
 
   constructor(config: LogtoNativeConfig) {
-    const storage = new MemoryStorage();
+    const storage = new SecureStorage(`logto.${config.appId}`);
     const requester = createRequester(fetch);
 
     super(
@@ -54,7 +54,7 @@ export class LogtoClient extends StandardLogtoClient {
             case 'sign-in': {
               this.authSessionResult = undefined;
               this.authSessionResult = await WebBrowser.openAuthSessionAsync(url, redirectUri, {
-                preferEphemeralSession: config.preferEphemeralSession,
+                preferEphemeralSession: config.preferEphemeralSession ?? true,
               });
               break;
             }

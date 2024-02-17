@@ -2,9 +2,7 @@
   "extends": "@silverhand/ts-config-react/tsconfig.base",
   "compilerOptions": {
     "noEmit": false,
-    "outDir": "lib",
-    "moduleResolution": "node10",
-    "module": "commonjs"
+    "outDir": "lib"
   },
   "include": [
     "src",
