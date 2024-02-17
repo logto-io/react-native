@@ -1,11 +1,12 @@
 {
   "extends": "@silverhand/ts-config-react/tsconfig.base",
   "compilerOptions": {
+    "types": ["node", "vitest/globals"],
     "noEmit": false,
     "outDir": "lib"
   },
   "include": [
     "src",
-    "jest.config.ts"
+    "vitest.config.ts"
   ]
 }

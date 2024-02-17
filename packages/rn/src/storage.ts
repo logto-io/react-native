@@ -34,12 +34,12 @@ export class SecureStorage implements Storage<string> {
       return null;
     }
 
-    return this.#decrypt(storageKey, encrypted);
+    return this.decrypt(storageKey, encrypted);
   }
 
   async setItem(key: string, value: string) {
     const storageKey = this.getStorageKey(key);
-    const encrypted = await this.#encrypt(storageKey, value);
+    const encrypted = await this.encrypt(storageKey, value);
     await AsyncStorage.setItem(storageKey, encrypted);
   }
 
@@ -51,7 +51,7 @@ export class SecureStorage implements Storage<string> {
     ]);
   }
 
-  async #encrypt(key: string, value: string) {
+  protected async encrypt(key: string, value: string) {
     const encryptionKey = await generateRandomString();
     const encrypted = CryptoES.AES.encrypt(value, encryptionKey).toString();
 
@@ -59,7 +59,7 @@ export class SecureStorage implements Storage<string> {
     return encrypted;
   }
 
-  async #decrypt(key: string, value: string) {
+  protected async decrypt(key: string, value: string) {
     const encryptionKey = await SecureStore.getItemAsync(key);
 
     if (!encryptionKey) {
