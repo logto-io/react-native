@@ -1,0 +1,31 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+  pull_request:
+
+concurrency:
+  group: main-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node and pnpm
+        uses: silverhand-io/actions-node-pnpm-run-steps@v4
+
+      - name: Build
+        run: pnpm -r build
+
+      - name: Lint
+        run: pnpm -r lint
+
+      - name: Test
+        run: pnpm -r test
