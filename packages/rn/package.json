@@ -55,11 +55,13 @@
   "dependencies": {
     "@logto/client": "3.0.0-alpha.2",
     "@logto/js": "4.0.0-alpha.2",
-    "@react-native-async-storage/async-storage": "^1.22.0",
     "crypto-es": "^2.1.0",
+    "js-base64": "^3.7.6"
+  },
+  "peerDependencies": {
+    "@react-native-async-storage/async-storage": "^1.22.0",
     "expo-crypto": "^12.8.0",
     "expo-secure-store": "^12.8.1",
-    "expo-web-browser": "^12.8.2",
-    "js-base64": "^3.7.6"
+    "expo-web-browser": "^12.8.2"
   }
 }

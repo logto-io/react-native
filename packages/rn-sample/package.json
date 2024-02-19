@@ -4,15 +4,22 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "dev": "expo start",
+    "dev:android": "expo start --android",
+    "dev:ios": "expo start --ios",
+    "dev:web": "expo start --web",
+    "run": "expo run",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@logto/rn": "workspace:^",
+    "@react-native-async-storage/async-storage": "^1.22.0",
     "expo": "~50.0.6",
+    "expo-crypto": "^12.8.1",
+    "expo-secure-store": "^12.8.1",
     "expo-status-bar": "~1.11.1",
+    "expo-web-browser": "^12.8.2",
     "react": "18.2.0",
     "react-native": "0.73.4"
   },
