@@ -20,13 +20,13 @@ The monorepo for Logto React Native (Expo) SDK and sample.
 ## Installation
 
 ```bash
-  npm install @logto/rn --save
-  npm install expo-crypto expo-secure-store expo-web-browser @react-native-async-storage/async-storage
+npm install @logto/rn --save
+npm install expo-crypto expo-secure-store expo-web-browser @react-native-async-storage/async-storage
 ```
 
 The `@logto/rn` package is the SDK for Logto. The remaining packages are its peer dependencies. They couldn't be listed as direct dependencies because the Expo CLI requires that all dependencies for native modules be installed directly within the root project's package.json.
 
-You could also use other package managers such as yarn or pnpm.
+You could also use other package managers such as `yarn` or `pnpm`.
 
 ## Configuration
 
@@ -44,7 +44,7 @@ e.g. In the `@logto/rn-sample` we use `io.logto://callback` as the callback URL.
 
 ## Integration
 
-```javascript
+```tsx
 import { LogtoProvider, useLogto } from "@logto/rn";
 
 const App = () => {
