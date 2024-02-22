@@ -20,21 +20,13 @@ The monorepo for Logto React Native (Expo) SDK and sample.
 ## Installation
 
 ```bash
-  pnpm install @logto/rn --save
+  npm install @logto/rn --save
+  npm install expo-crypto expo-secure-store expo-web-browser @react-native-async-storage/async-storage
 ```
 
-### PeerDependencies
+The `@logto/rn` package is the SDK for Logto. The remaining packages are its peer dependencies. They couldn't be listed as direct dependencies because the Expo CLI requires that all dependencies for native modules be installed directly within the root project's package.json.
 
-- `expo-crypto`
-- `expo-secure-store`
-- `expo-web-browser`
-- `@react-native-async-storage/async-storage`
-
-expo CLI build requires all native module dependencies to be installed directly under the root project's package.json.
-
-```bash
-pnpm install expo-crypto expo-secure-store expo-web-browser @react-native-async-storage/async-storage --save
-```
+You could also use other package managers such as yarn or pnpm.
 
 ## Configuration
 
@@ -84,7 +76,7 @@ const endpoint = "YOUR_LOGTO_ENDPOINT";
 const appId = "YOUR_APP_ID";
 ```
 
-### Run using expo go
+### Run using Expo Go
 
 > [!Caution]
 > This SDK is not compatible with "Expo Go" sandbox on Android.
@@ -102,11 +94,14 @@ pnpm dev:ios
 Under the path `packages/rn-sample` run the following command.
 
 ```bash
-pnpm run
+# Run expo
+pnpm expo run
 
+# Directly run on android device
 # pnpm android
-# pnpm ios
 
+# Directly run on ios device
+# pnpm ios
 ```
 
 ## Resources
