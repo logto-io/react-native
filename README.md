@@ -44,9 +44,19 @@ For instance, in the `@logto/rn-sample` we use `io.logto://callback` as the call
 ```tsx
 import { LogtoProvider, useLogto } from "@logto/rn";
 
-const App = () => {
+// Use useLogto hook to sign in and sign out
+const Content = () => {
   const { signIn, signOut, isAuthenticated } = useLogto();
 
+  return isAuthenticated ? (
+    <Button title="Sign Out" onPress={signOut} />
+  ) : (
+    <Button title="Sign In" onPress={async () => signIn(redirectUri)} />
+  );
+};
+
+// Wrap your page component with LogtoProvider
+const App = () => {
   const logtoConfig = {
     appId: "YOUR_APP",
     endpoint: "YOUR_LOGTO_ENDPOINT",
@@ -54,11 +64,7 @@ const App = () => {
 
   return (
     <LogtoProvider config={logtoConfig}>
-      {isAuthenticated ? (
-        <Button title="Sign Out" onPress={signOut} />
-      ) : (
-        <Button title="Sign In" onPress={async () => signIn(redirectUri)} />
-      )}
+      <Content />
     </LogtoProvider>
   );
 };
