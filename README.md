@@ -17,11 +17,11 @@ The monorepo for Logto React Native (Expo) SDK and sample.
 ## Installation
 
 ```bash
-npm install @logto/rn --save
+npm install @logto/rn
 npm install expo-crypto expo-secure-store expo-web-browser @react-native-async-storage/async-storage
 ```
 
-The `@logto/rn` package is the SDK for Logto. The remaining packages are its peer dependencies. They couldn't be listed as direct dependencies because the Expo CLI requires that all dependencies for native modules be installed directly within the root project's package.json.
+The `@logto/rn` package is the SDK for Logto. The remaining packages are its peer dependencies. They couldn't be listed as direct dependencies because the Expo CLI requires that all dependencies for native modules be installed directly within the root project's `package.json`.
 
 You could also use other package managers such as `yarn` or `pnpm`.
 
@@ -29,7 +29,7 @@ You could also use other package managers such as `yarn` or `pnpm`.
 
 To make the redirect URI deep link work, you need to configure the `scheme` in the `app.json` file.
 
-e.g. In the `@logto/rn-sample` we use `io.logto://callback` as the callback URL.
+For instance, in the `@logto/rn-sample` we use `io.logto://callback` as the callback URL.
 
 ```json
 {
