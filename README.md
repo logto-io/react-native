@@ -6,9 +6,6 @@
 
 # Logto React Native
 
-> [!Caution]
-> This repo is still work in progress and not ready for production use.
-
 [![Discord](https://img.shields.io/discord/965845662535147551?logo=discord&logoColor=ffffff&color=7389D8&cacheSeconds=600)](https://discord.gg/UEPaF3j5e6)
 [![Build Status](https://github.com/logto-io/react-native/actions/workflows/main.yml/badge.svg)](https://github.com/logto-io/react-native/actions/workflows/main.yml)
 

@@ -1,5 +1,8 @@
 # Logto React Native SDK
 
+[![Version](https://img.shields.io/npm/v/@logto/rn)](https://www.npmjs.com/package/@logto/rn)
+[![Build Status](https://github.com/logto-io/react-native/actions/workflows/main.yml/badge.svg)](https://github.com/logto-io/react-native/actions/workflows/main.yml)
+
 The Logto JavaScript Core SDK written in TypeScript. Check out our [docs](https://docs.logto.io/sdk/react-native/) for more information.
 
 ## Installation
