@@ -24,11 +24,11 @@ importers:
   packages/rn:
     dependencies:
       '@logto/client':
-        specifier: 3.0.0-alpha.2
-        version: 3.0.0-alpha.2
+        specifier: 2.4.0
+        version: 2.4.0
       '@logto/js':
-        specifier: 4.0.0-alpha.2
-        version: 4.0.0-alpha.2
+        specifier: 4.0.0
+        version: 4.0.0
       '@react-native-async-storage/async-storage':
         specifier: ^1.22.0
         version: 1.22.0(react-native@0.73.4)
@@ -2487,17 +2487,17 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@logto/client@3.0.0-alpha.2:
-    resolution: {integrity: sha512-UGsYTsuORCCxfOUo6SedfkOCLL8mHphISzi2chx108zFGONxAiMtFHezv7TtshYXHMXYBenyXMKGVVcvL7evyA==}
+  /@logto/client@2.4.0:
+    resolution: {integrity: sha512-gdswqI5yuov7H/8SU2GoFDKRrlwTbhhRleq2Pnf5Yphq+Kvggu7j7EsixGE97QzomPfe2x8eeWtWoHyI96Q5qA==}
     dependencies:
-      '@logto/js': 4.0.0-alpha.2
+      '@logto/js': 4.0.0
       '@silverhand/essentials': 2.9.0
       camelcase-keys: 7.0.2
       jose: 5.2.2
     dev: false
 
-  /@logto/js@4.0.0-alpha.2:
-    resolution: {integrity: sha512-zfoDrJ3OqvRLlyvsODTTZ0eRrfGLV/o1dI4irYbpZMhPx9+frkYjOIbys7Vz7AH6AcH0NhNpj/9v6b1EDO9+Dw==}
+  /@logto/js@4.0.0:
+    resolution: {integrity: sha512-eKLS0HqFjQyf7imKTf2a7FUmMuNeebxFZ2b5A/1qUWSyO+BIxSu0XYI4JZ9qjtWNPvlGmL+jPOkIUuWQ9DZYZw==}
     dependencies:
       '@silverhand/essentials': 2.9.0
       camelcase-keys: 7.0.2

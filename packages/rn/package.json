@@ -53,8 +53,8 @@
   },
   "prettier": "@silverhand/eslint-config/.prettierrc",
   "dependencies": {
-    "@logto/client": "3.0.0-alpha.2",
-    "@logto/js": "4.0.0-alpha.2",
+    "@logto/client": "2.4.0",
+    "@logto/js": "4.0.0",
     "crypto-es": "^2.1.0",
     "js-base64": "^3.7.6"
   },
