@@ -71,7 +71,7 @@ const App = () => {
 
 ### Replace the `appId` and `endpoint` in `App.tsx` with your own Logto settings.
 
-```javascript
+```tsx
 const endpoint = "YOUR_LOGTO_ENDPOINT";
 const appId = "YOUR_APP_ID";
 ```
