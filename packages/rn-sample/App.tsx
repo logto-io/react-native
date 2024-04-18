@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unassigned-import
 import '@logto/rn/polyfill';
 
-import { LogtoProvider, useLogto, type IdTokenClaims } from '@logto/rn';
+import { LogtoProvider, Prompt, useLogto, type IdTokenClaims } from '@logto/rn';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
@@ -54,6 +54,7 @@ const App = () => {
       config={{
         endpoint,
         appId,
+        prompt: Prompt.Login,
       }}
     >
       <Content />

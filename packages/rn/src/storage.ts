@@ -1,5 +1,6 @@
-import { type Storage } from '@logto/client/shim';
+import { type Storage, type StorageKey } from '@logto/client/shim';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import type { Nullable } from '@silverhand/essentials';
 import CryptoES from 'crypto-es';
 import * as SecureStore from 'expo-secure-store';
 
@@ -67,5 +68,52 @@ export class SecureStorage implements Storage<string> {
     }
 
     return CryptoES.AES.decrypt(value, encryptionKey).toString(CryptoES.enc.Utf8);
+  }
+}
+
+const keyPrefix = `logto`;
+
+/**
+ * This is a browser storage implementation that uses `localStorage` and `sessionStorage`.
+ *
+ * @remarks
+ * Forked from @logto/browser/src/storage.ts
+ * Since `expo-secure-store` doesn't support web, we need to use the browser's native storage.
+ * @see {@link https://docs.expo.dev/versions/latest/sdk/securestore/}
+ */
+export class BrowserStorage implements Storage<StorageKey> {
+  constructor(public readonly appId: string) {}
+
+  getKey(item?: string) {
+    if (item === undefined) {
+      return `${keyPrefix}:${this.appId}`;
+    }
+
+    return `${keyPrefix}:${this.appId}:${item}`;
+  }
+
+  async getItem(key: StorageKey): Promise<Nullable<string>> {
+    if (key === 'signInSession') {
+      // The latter `getItem()` is for backward compatibility. Can be removed when major bump.
+      return sessionStorage.getItem(this.getKey(key)) ?? sessionStorage.getItem(this.getKey());
+    }
+
+    return localStorage.getItem(this.getKey(key));
+  }
+
+  async setItem(key: StorageKey, value: string): Promise<void> {
+    if (key === 'signInSession') {
+      sessionStorage.setItem(this.getKey(key), value);
+      return;
+    }
+    localStorage.setItem(this.getKey(key), value);
+  }
+
+  async removeItem(key: StorageKey): Promise<void> {
+    if (key === 'signInSession') {
+      sessionStorage.removeItem(this.getKey(key));
+      return;
+    }
+    localStorage.removeItem(this.getKey(key));
   }
 }
