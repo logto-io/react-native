@@ -108,16 +108,13 @@ pnpm dev:web
 > Expo Go app by default uses `exp://` scheme for deep linking, which is not a valid private native scheme. See [OAuth2 spec](https://datatracker.ietf.org/doc/html/rfc8252#section-8.4) for more details.
 > For Android, Use [development-build](https://docs.expo.dev/develop/development-builds/introduction/) to test this SDK
 
-:::note
-
-In terms of the redirect URI scheme, different platforms have different requirements.
-
-- For native platforms, a Private-Use native URI scheme is required. See [OAuth2 spec](https://datatracker.ietf.org/doc/html/rfc8252#section-8.4) for more details.
-- For web platforms (SPA), an `http(s)//` scheme is required.
-
-You may need to register different applications in the Logto dashboard for different platforms. Make sure to configure the correct `redirectUri` and `clientId` for different platforms.
-
-:::
+> [!Note]
+> In terms of the redirect URI scheme, different platforms have different requirements.
+>
+> - For native platforms, a Private-Use native URI scheme is required. See [OAuth2 spec](https://datatracker.ietf.org/doc/html/rfc8252#section-8.4) for more details.
+> - For web platforms (SPA), an `http(s)//` scheme is required.
+>
+> You may need to register different applications in the Logto dashboard for different platforms. Make sure to configure the correct `redirectUri` and `clientId` for different platforms.
 
 ### Build and run native package
 
