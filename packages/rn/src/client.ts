@@ -66,6 +66,7 @@ export class LogtoClient extends StandardLogtoClient {
             case 'sign-out': {
               break;
             }
+            // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check -- just in case
             default: {
               throw new LogtoNativeClientError('navigation_purpose_not_supported');
             }
