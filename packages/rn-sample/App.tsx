@@ -56,7 +56,7 @@ const App = () => {
         appId,
         // For better demonstration, override the default prompt to always show the login screen.
         // Default value is `Prompt.Consent`.
-        // With Prompt.Consent settings User will automatically be consented if they have a valid session.
+        // With `Prompt.Consent` settings, user will automatically be consented if they have a valid session.
         prompt: Prompt.Login,
       }}
     >
