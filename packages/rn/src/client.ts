@@ -1,16 +1,17 @@
 import {
-  type LogtoConfig,
-  createRequester,
-  StandardLogtoClient,
-  type InteractionMode,
-  Prompt,
   LogtoError,
+  Prompt,
+  StandardLogtoClient,
+  createRequester,
+  type InteractionMode,
+  type LogtoConfig,
 } from '@logto/client/shim';
 import { decodeIdToken } from '@logto/js';
 import * as WebBrowser from 'expo-web-browser';
+import { Platform } from 'react-native';
 
 import { LogtoNativeClientError } from './errors';
-import { SecureStorage } from './storage';
+import { BrowserStorage, SecureStorage } from './storage';
 import { generateCodeChallenge, generateRandomString } from './utils';
 
 const issuedAtTimeTolerance = 300; // 5 minutes
@@ -39,10 +40,14 @@ export type LogtoNativeConfig = LogtoConfig & {
 
 export class LogtoClient extends StandardLogtoClient {
   authSessionResult?: WebBrowser.WebBrowserAuthSessionResult;
-  protected storage: SecureStorage;
+  protected storage: SecureStorage | BrowserStorage;
 
   constructor(config: LogtoNativeConfig) {
-    const storage = new SecureStorage(`logto.${config.appId}`);
+    const storage =
+      Platform.OS === 'web'
+        ? new BrowserStorage(config.appId)
+        : new SecureStorage(`logto.${config.appId}`);
+
     const requester = createRequester(fetch);
 
     super(

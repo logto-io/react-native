@@ -72,6 +72,14 @@ const App = () => {
 
 ## Run the sample app
 
+> [!Note]
+> In terms of the redirect URI scheme, different platforms have different requirements.
+>
+> - For native platforms, a Private-Use native URI scheme is required. See [OAuth2 spec](https://datatracker.ietf.org/doc/html/rfc8252#section-8.4) for more details.
+> - For web platforms (SPA), an `http(s)://` scheme is required.
+>
+> You may need to register different applications in the Logto dashboard for different platforms. Make sure to configure the correct `redirectUri` and `clientId` for different platforms.
+
 ### Replace the `appId` and `endpoint` in `App.tsx` with your own Logto settings.
 
 ```tsx
@@ -79,18 +87,34 @@ const endpoint = "YOUR_LOGTO_ENDPOINT";
 const appId = "YOUR_APP_ID";
 ```
 
-### Run using Expo Go
+### Development using Expo Go
 
-> [!Caution]
-> This SDK is not compatible with "Expo Go" sandbox on Android.
-> Under the hood, this SDK uses `ExpoAuthSession` to handle the user authentication flow. Native deep linking is not supported in "Expo Go". For more details please refer to [deep-linking](https://docs.expo.dev/guides/deep-linking/)
-> Use [development-build](https://docs.expo.dev/develop/development-builds/introduction/) to test this SDK on Android.
+#### For iOS
 
-Under the path `packages/rn-sample` run the following command.
+Customize the redirect URI e.g. `io.logto://callback` and pass it to the `signIn` function.
+
+Run the following command under the path `packages/rn-sample`.
 
 ```bash
 pnpm dev:ios
 ```
+
+#### For web
+
+Customize the redirect URI e.g. `http://localhost:19006` and pass it to the `signIn` function.
+
+Run the following command under the path `packages/rn-sample`.
+
+```bash
+pnpm dev:web
+```
+
+#### For Android
+
+> [!Caution]
+> This SDK is not compatible with "Expo Go" sandbox on Android.
+> Expo Go app by default uses `exp://` scheme for deep linking, which is not a valid private native scheme. See [OAuth2 spec](https://datatracker.ietf.org/doc/html/rfc8252#section-8.4) for more details.
+> For Android, Use [development-build](https://docs.expo.dev/develop/development-builds/introduction/) to test this SDK
 
 ### Build and run native package
 

@@ -1,4 +1,5 @@
-import { useCallback, useContext, useMemo } from 'react';
+import { maybeCompleteAuthSession } from 'expo-web-browser';
+import { useCallback, useContext, useEffect, useMemo } from 'react';
 
 // eslint-disable-next-line unused-imports/no-unused-imports -- use for JSDoc
 import type { LogtoClient } from './client';
@@ -11,6 +12,12 @@ import { LogtoContext } from './context';
  */
 export const useLogto = () => {
   const { client, isAuthenticated, setIsAuthenticated } = useContext(LogtoContext);
+
+  useEffect(() => {
+    // This is required to handle the redirect from the browser on a web-based expo app
+    // @see {@link https://docs.expo.dev/versions/latest/sdk/webbrowser/#webbrowsermaybecompleteauthsessionoptions}
+    maybeCompleteAuthSession();
+  }, []);
 
   const signIn = useCallback(
     async (redirectUri: string) => {

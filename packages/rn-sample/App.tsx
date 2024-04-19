@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unassigned-import
 import '@logto/rn/polyfill';
 
-import { LogtoProvider, useLogto, type IdTokenClaims } from '@logto/rn';
+import { LogtoProvider, Prompt, useLogto, type IdTokenClaims } from '@logto/rn';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
@@ -54,6 +54,10 @@ const App = () => {
       config={{
         endpoint,
         appId,
+        // For better demonstration, override the default prompt to always show the login screen.
+        // Default value is `Prompt.Consent`.
+        // With `Prompt.Consent` settings, user will automatically be consented if they have a valid session.
+        prompt: Prompt.Login,
       }}
     >
       <Content />
