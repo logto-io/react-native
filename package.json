@@ -11,5 +11,11 @@
     "@commitlint/config-conventional": "^18.6.1",
     "@commitlint/types": "^18.6.1",
     "husky": "^9.0.11"
+  },
+  "pnpm": {
+    "overrides": {
+      "@expo/config>semver@^7": "^7.6.0",
+      "@expo/image-utils>semver@^7": "^7.6.0"
+    }
   }
 }
