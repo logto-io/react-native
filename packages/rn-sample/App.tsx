@@ -1,6 +1,3 @@
-// eslint-disable-next-line import/no-unassigned-import
-import '@logto/rn/polyfill';
-
 import { LogtoProvider, Prompt, useLogto, type IdTokenClaims } from '@logto/rn';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
