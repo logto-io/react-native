@@ -12,10 +12,6 @@
       "import": "./lib/index.js",
       "require": "./lib/index.js",
       "types": "./lib/index.d.ts"
-    },
-    "./polyfill": {
-      "import": "./lib/polyfill.js",
-      "require": "./lib/polyfill.js"
     }
   },
   "files": [
@@ -56,13 +52,13 @@
     "@logto/client": "2.4.0",
     "@logto/js": "4.0.0",
     "crypto-es": "^2.1.0",
-    "js-base64": "^3.7.6"
+    "js-base64": "^3.7.7"
   },
   "peerDependencies": {
     "@react-native-async-storage/async-storage": "^1.23.1",
     "expo-crypto": "^13.0.2",
     "expo-secure-store": "^13.0.1",
     "expo-web-browser": "^13.0.3",
-    "react-native": ">=0.73.4 <1"
+    "react-native": ">=0.74.1 <1"
   }
 }
