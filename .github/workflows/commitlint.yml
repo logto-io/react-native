@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
 
-concurrency: 
+concurrency:
   group: commitlint-${{ github.ref }}
   cancel-in-progress: true
 
@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node and pnpm
-        uses: silverhand-io/actions-node-pnpm-run-steps@v4
+        uses: silverhand-io/actions-node-pnpm-run-steps@v5
         with:
           pnpm-version: 9
 

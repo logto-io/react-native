@@ -11,7 +11,7 @@ import { LogtoContext } from './context';
  * `LogtoProvider` component to wrap the root component of the app.
  */
 export const useLogto = () => {
-  const { client, isAuthenticated, setIsAuthenticated } = useContext(LogtoContext);
+  const { client, isAuthenticated, setIsAuthenticated, isInitialized } = useContext(LogtoContext);
 
   useEffect(() => {
     // This is required to handle the redirect from the browser on a web-based expo app
@@ -45,6 +45,10 @@ export const useLogto = () => {
        * tokens are valid.
        */
       isAuthenticated,
+      /**
+       * Indicates if the client is initialized and the authentication state is retrieved from the storage.
+       */
+      isInitialized,
       /** @see {@link LogtoClient.getRefreshToken} */
       getRefreshToken: client.getRefreshToken.bind(client),
       /** @see {@link LogtoClient.getAccessToken} */
@@ -66,7 +70,7 @@ export const useLogto = () => {
       /** @see {@link LogtoClient.fetchUserInfo} */
       fetchUserInfo: client.fetchUserInfo.bind(client),
     }),
-    [client, isAuthenticated, signIn, signOut]
+    [client, isAuthenticated, isInitialized, signIn, signOut]
   );
 
   return memorized;
