@@ -16,12 +16,15 @@ export type LogtoProviderProps = {
 export const LogtoProvider = ({ config, children }: LogtoProviderProps) => {
   const memorizedLogtoClient = useMemo(() => new LogtoClient(config), [config]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     (async () => {
       const isAuthenticated = await memorizedLogtoClient.isAuthenticated();
-
       setIsAuthenticated(isAuthenticated);
+
+      // Mark the client as initialized.
+      setIsInitialized(true);
     })();
   }, [memorizedLogtoClient]);
 
@@ -29,9 +32,10 @@ export const LogtoProvider = ({ config, children }: LogtoProviderProps) => {
     () => ({
       client: memorizedLogtoClient,
       isAuthenticated,
+      isInitialized,
       setIsAuthenticated,
     }),
-    [memorizedLogtoClient, isAuthenticated]
+    [memorizedLogtoClient, isAuthenticated, isInitialized]
   );
 
   return <LogtoContext.Provider value={memorizedContextValue}>{children}</LogtoContext.Provider>;

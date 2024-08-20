@@ -9,7 +9,7 @@ const endpoint = 'https://<your-logto-endpoint>';
 const appId = '<your-app-id>';
 
 const Content = () => {
-  const { signIn, signOut, client, isAuthenticated, getIdTokenClaims } = useLogto();
+  const { signIn, signOut, client, isAuthenticated, isInitialized, getIdTokenClaims } = useLogto();
   const [claims, setClaims] = useState<IdTokenClaims>();
 
   useEffect(() => {
@@ -17,10 +17,10 @@ const Content = () => {
       setClaims(await getIdTokenClaims());
     };
 
-    if (isAuthenticated) {
+    if (isInitialized && isAuthenticated) {
       void get();
     }
-  }, [isAuthenticated, getIdTokenClaims]);
+  }, [isAuthenticated, getIdTokenClaims, isInitialized]);
 
   return (
     <View style={styles.container}>
