@@ -3,9 +3,10 @@ import {
   Prompt,
   StandardLogtoClient,
   createRequester,
+  SignInOptions,
   type InteractionMode,
   type LogtoConfig,
-} from '@logto/client/shim';
+} from '@logto/client';
 import { decodeIdToken } from '@logto/js';
 import * as WebBrowser from 'expo-web-browser';
 import { Platform } from 'react-native';
@@ -111,14 +112,35 @@ export class LogtoClient extends StandardLogtoClient {
    * The user will be redirected to that URI after the sign-in flow is completed, and the client
    * will handle the callback to exchange the authorization code for the tokens.
    *
+   * @param options The options for the sign-in flow.
+   *
+   * @see {@link SignInOptions}
+   */
+  override async signIn(options: SignInOptions): Promise<void>;
+  /**
+   * Start the sign-in flow with the specified redirect URI. The URI must be registered in the
+   * Logto Console. It uses `WebBrowser.openAuthSessionAsync` to open the browser and start the
+   * sign-in flow.
+   *
+   * The user will be redirected to that URI after the sign-in flow is completed, and the client
+   * will handle the callback to exchange the authorization code for the tokens.
+   *
    * @param redirectUri The redirect URI that the user will be redirected to after the sign-in flow is completed.
    * @param interactionMode The interaction mode to be used for the authorization request. Note it's not
    * a part of the OIDC standard, but a Logto-specific extension. Defaults to `signIn`.
    *
    * @see {@link InteractionMode}
    */
-  override async signIn(redirectUri: string, interactionMode?: InteractionMode): Promise<void> {
-    await super.signIn(redirectUri, interactionMode);
+  override async signIn(redirectUri: string, interactionMode?: InteractionMode): Promise<void>;
+  override async signIn(
+    options: SignInOptions | string,
+    interactionMode?: InteractionMode
+  ): Promise<void> {
+    if (typeof options === 'string') {
+      await super.signIn(options, interactionMode);
+    } else {
+      await super.signIn(options);
+    }
 
     if (this.authSessionResult?.type !== 'success') {
       throw new LogtoNativeClientError('auth_session_failed');

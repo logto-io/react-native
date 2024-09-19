@@ -1,4 +1,4 @@
-import { type Storage, type StorageKey } from '@logto/client/shim';
+import { type Storage, type StorageKey } from '@logto/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { Nullable } from '@silverhand/essentials';
 import CryptoES from 'crypto-es';

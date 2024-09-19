@@ -6,7 +6,7 @@ export type {
   UserInfoResponse,
   InteractionMode,
   ClientAdapter,
-} from '@logto/client/shim';
+} from '@logto/client';
 
 export {
   createRequester,
@@ -22,7 +22,7 @@ export {
   buildOrganizationUrn,
   getOrganizationIdFromUrn,
   PersistKey,
-} from '@logto/client/shim';
+} from '@logto/client';
 
 export * from './client';
 export * from './context';
