@@ -3,7 +3,7 @@ import {
   Prompt,
   StandardLogtoClient,
   createRequester,
-  SignInOptions,
+  type SignInOptions,
   type InteractionMode,
   type LogtoConfig,
 } from '@logto/client';
@@ -67,7 +67,6 @@ export class LogtoClient extends StandardLogtoClient {
             case 'sign-out': {
               break;
             }
-            // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check -- just in case
             default: {
               throw new LogtoNativeClientError('navigation_purpose_not_supported');
             }
@@ -136,11 +135,9 @@ export class LogtoClient extends StandardLogtoClient {
     options: SignInOptions | string,
     interactionMode?: InteractionMode
   ): Promise<void> {
-    if (typeof options === 'string') {
-      await super.signIn(options, interactionMode);
-    } else {
-      await super.signIn(options);
-    }
+    await (typeof options === 'string'
+      ? super.signIn(options, interactionMode)
+      : super.signIn(options));
 
     if (this.authSessionResult?.type !== 'success') {
       throw new LogtoNativeClientError('auth_session_failed');
