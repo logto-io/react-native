@@ -1,3 +1,4 @@
+import { type InteractionMode, type SignInOptions } from '@logto/client';
 import { maybeCompleteAuthSession } from 'expo-web-browser';
 import { useCallback, useContext, useEffect, useMemo } from 'react';
 
@@ -19,9 +20,15 @@ export const useLogto = () => {
     maybeCompleteAuthSession();
   }, []);
 
-  const signIn = useCallback(
-    async (redirectUri: string) => {
-      await client.signIn(redirectUri);
+  const signIn: {
+    (options: string, interactionMode?: InteractionMode): Promise<void>;
+    (options: SignInOptions): Promise<void>;
+  } = useCallback(
+    async (options: SignInOptions | string, interactionMode?: InteractionMode) => {
+      await (typeof options === 'string'
+        ? client.signIn(options, interactionMode)
+        : client.signIn(options));
+
       setIsAuthenticated(true);
     },
     [client, setIsAuthenticated]
