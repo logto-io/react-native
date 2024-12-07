@@ -15,14 +15,14 @@
     "@expo/metro-runtime": "~3.2.1",
     "@logto/rn": "workspace:^",
     "@react-native-async-storage/async-storage": "^1.23.1",
-    "expo": "~51.0.38",
+    "expo": "~51.0.39",
     "expo-crypto": "^13.0.2",
     "expo-secure-store": "^13.0.1",
     "expo-status-bar": "~1.12.1",
     "expo-web-browser": "^13.0.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-native": "0.74.1",
+    "react-native": "0.74.6",
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {
