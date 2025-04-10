@@ -32,25 +32,25 @@
     "prepack": "pnpm build && pnpm test"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-env": "^7.26.9",
     "@silverhand/eslint-config": "^6.0.1",
     "@silverhand/eslint-config-react": "^6.0.2",
     "@silverhand/ts-config": "^6.0.0",
     "@silverhand/ts-config-react": "^6.0.0",
     "@types/react": "~18.2.45",
     "eslint": "^8.57.0",
-    "prettier": "^3.2.5",
-    "stylelint": "^15.0.0",
-    "typescript": "^5.4.5",
-    "vitest": "^2.1.9"
+    "prettier": "^3.5.3",
+    "stylelint": "^16.18.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
   },
   "eslintConfig": {
     "extends": "@silverhand/react"
   },
   "prettier": "@silverhand/eslint-config/.prettierrc",
   "dependencies": {
-    "@logto/client": "2.8.1",
-    "@logto/js": "4.2.0",
+    "@logto/client": "3.1.1",
+    "@logto/js": "5.1.0",
     "crypto-es": "^2.1.0",
     "js-base64": "^3.7.7"
   },
