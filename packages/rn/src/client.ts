@@ -61,6 +61,7 @@ export class LogtoClient extends StandardLogtoClient {
               this.authSessionResult = undefined;
               this.authSessionResult = await WebBrowser.openAuthSessionAsync(url, redirectUri, {
                 preferEphemeralSession: config.preferEphemeralSession ?? true,
+                createTask: false,
               });
               break;
             }
