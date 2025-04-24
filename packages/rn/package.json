@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -49,8 +49,8 @@
   },
   "prettier": "@silverhand/eslint-config/.prettierrc",
   "dependencies": {
-    "@logto/client": "3.1.1",
-    "@logto/js": "5.1.0",
+    "@logto/client": "3.1.2",
+    "@logto/js": "5.1.1",
     "crypto-es": "^2.1.0",
     "js-base64": "^3.7.7"
   },

@@ -12,9 +12,9 @@
     "ios": "expo run:ios"
   },
   "dependencies": {
-    "@expo/metro-runtime": "~4.0.1",
+    "@expo/metro-runtime": "^4.0.1",
     "@logto/rn": "workspace:^",
-    "@react-native-async-storage/async-storage": "^1.23.1",
+    "@react-native-async-storage/async-storage": "~1.23.1",
     "expo": "~52.0.37",
     "expo-crypto": "^14.0.2",
     "expo-secure-store": "^14.0.1",
