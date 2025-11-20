@@ -20,7 +20,10 @@ overrides:
   brace-expansion@>=1.0.0 <=1.1.11: ^1.1.12
   brace-expansion@>=2.0.0 <=2.0.1: ^2.0.2
   on-headers@<1.1.0: ^1.1.0
-  vite@<=5.4.19: ^5.4.20
+  vite@<=5.4.20: ^5.4.21
+  js-yaml@<3.14.2: ^3.14.2
+  js-yaml@>=4.0.0 <4.1.1: ^4.1.1
+  glob@>=10.2.0 <10.5.0: ^10.5.0
 
 importers:
 
@@ -1833,7 +1836,7 @@ packages:
     resolution: {integrity: sha512-kOtd6K2lc7SQ0mBqYv/wdGedlqPdM/B38paPY+OwJ1XiNi44w3Fpog82UfOibmHaV9Wod18A09I9SCKLyDMqgw==}
     peerDependencies:
       msw: ^2.4.9
-      vite: ^5.4.20
+      vite: ^5.4.21
     peerDependenciesMeta:
       msw:
         optional: true
@@ -3264,8 +3267,8 @@ packages:
     resolution: {integrity: sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==}
     engines: {node: '>=10.13.0'}
 
-  glob@10.4.5:
-    resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+  glob@10.5.0:
+    resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
     hasBin: true
 
   glob@7.2.3:
@@ -3736,12 +3739,12 @@ packages:
     resolution: {integrity: sha512-bfwqBW9cC/Lp7xcRpug7YrXm0IVw+T9e3g4mCYnv0Pjr3zIzU9PCQElYU9oSGAWzXlbdl9X5SAMPejO9sxkeUw==}
     engines: {node: '>=0.10.0'}
 
-  js-yaml@3.14.1:
-    resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
+  js-yaml@3.14.2:
+    resolution: {integrity: sha512-PMSmkqxr106Xa156c2M265Z+FTrPl+oxd/rgOQy2tijQeK5TxQ43psO1ZCwhVOSdnn+RzkzlRz/eY4BgJBYVpg==}
     hasBin: true
 
-  js-yaml@4.1.0:
-    resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
+  js-yaml@4.1.1:
+    resolution: {integrity: sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==}
     hasBin: true
 
   jsc-android@250231.0.0:
@@ -5542,8 +5545,8 @@ packages:
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
 
-  vite@5.4.20:
-    resolution: {integrity: sha512-j3lYzGC3P+B5Yfy/pfKNgVEg4+UtcIJcVRt2cDjIOmhLourAqPqf8P7acgxeiSgUB7E3p2P8/3gNIgDLpwzs4g==}
+  vite@5.4.21:
+    resolution: {integrity: sha512-o5a9xKjbtuhY6Bi5S3+HvbRERmouabWbyUcpXXUA1u+GNUKoROi9byOJ8M0nHbHYHkYICiMlqxkg1KkYmm25Sw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -6925,7 +6928,7 @@ snapshots:
       globals: 13.24.0
       ignore: 5.3.2
       import-fresh: 3.3.1
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       minimatch: 3.1.2
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
@@ -6977,7 +6980,7 @@ snapshots:
       freeport-async: 2.0.0
       fs-extra: 8.1.0
       getenv: 1.0.0
-      glob: 10.4.5
+      glob: 10.5.0
       internal-ip: 4.3.0
       is-docker: 2.2.1
       is-wsl: 2.2.0
@@ -7032,7 +7035,7 @@ snapshots:
       chalk: 4.1.2
       debug: 4.4.0
       getenv: 1.0.0
-      glob: 10.4.5
+      glob: 10.5.0
       resolve-from: 5.0.0
       semver: 7.7.1
       slash: 3.0.0
@@ -7052,7 +7055,7 @@ snapshots:
       '@expo/json-file': 9.0.2
       deepmerge: 4.3.1
       getenv: 1.0.0
-      glob: 10.4.5
+      glob: 10.5.0
       require-from-string: 2.0.2
       resolve-from: 5.0.0
       resolve-workspace-root: 2.0.0
@@ -7066,7 +7069,7 @@ snapshots:
     dependencies:
       '@expo/sudo-prompt': 9.3.2
       debug: 3.2.7
-      glob: 10.4.5
+      glob: 10.5.0
     transitivePeerDependencies:
       - supports-color
 
@@ -7128,7 +7131,7 @@ snapshots:
       debug: 4.4.0
       fs-extra: 9.1.0
       getenv: 1.0.0
-      glob: 10.4.5
+      glob: 10.5.0
       jsc-safe-url: 0.2.4
       lightningcss: 1.27.0
       minimatch: 3.1.2
@@ -7158,7 +7161,7 @@ snapshots:
       ansi-regex: 5.0.1
       chalk: 4.1.2
       find-up: 5.0.0
-      js-yaml: 3.14.1
+      js-yaml: 3.14.2
       micromatch: 4.0.8
       npm-package-arg: 11.0.3
       ora: 3.4.0
@@ -7227,7 +7230,7 @@ snapshots:
       '@babel/code-frame': 7.10.4
       chalk: 4.1.2
       find-up: 5.0.0
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
 
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
@@ -7257,7 +7260,7 @@ snapshots:
       camelcase: 5.3.1
       find-up: 4.1.0
       get-package-type: 0.1.0
-      js-yaml: 3.14.1
+      js-yaml: 3.14.2
       resolve-from: 5.0.0
 
   '@istanbuljs/schema@0.1.3': {}
@@ -7942,13 +7945,13 @@ snapshots:
       chai: 5.2.0
       tinyrainbow: 2.0.0
 
-  '@vitest/mocker@3.1.2(vite@5.4.20(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0))':
+  '@vitest/mocker@3.1.2(vite@5.4.21(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0))':
     dependencies:
       '@vitest/spy': 3.1.2
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
-      vite: 5.4.20(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0)
+      vite: 5.4.21(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0)
 
   '@vitest/pretty-format@3.1.2':
     dependencies:
@@ -8358,7 +8361,7 @@ snapshots:
     dependencies:
       '@npmcli/fs': 3.1.1
       fs-minipass: 3.0.3
-      glob: 10.4.5
+      glob: 10.5.0
       lru-cache: 10.4.3
       minipass: 7.1.2
       minipass-collect: 2.0.1
@@ -8604,13 +8607,13 @@ snapshots:
     dependencies:
       import-fresh: 2.0.0
       is-directory: 0.3.1
-      js-yaml: 3.14.1
+      js-yaml: 3.14.2
       parse-json: 4.0.0
 
   cosmiconfig@8.3.6(typescript@5.8.3):
     dependencies:
       import-fresh: 3.3.1
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       parse-json: 5.2.0
       path-type: 4.0.0
     optionalDependencies:
@@ -8620,7 +8623,7 @@ snapshots:
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       parse-json: 5.2.0
     optionalDependencies:
       typescript: 5.8.3
@@ -9239,7 +9242,7 @@ snapshots:
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
       lodash.merge: 4.6.2
@@ -9752,7 +9755,7 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  glob@10.4.5:
+  glob@10.5.0:
     dependencies:
       foreground-child: 3.3.1
       jackspeak: 3.4.3
@@ -10232,12 +10235,12 @@ snapshots:
 
   js-types@1.0.0: {}
 
-  js-yaml@3.14.1:
+  js-yaml@3.14.2:
     dependencies:
       argparse: 1.0.10
       esprima: 4.0.1
 
-  js-yaml@4.1.0:
+  js-yaml@4.1.1:
     dependencies:
       argparse: 2.0.1
 
@@ -12040,7 +12043,7 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.8
       commander: 4.1.1
-      glob: 10.4.5
+      glob: 10.5.0
       lines-and-columns: 1.2.4
       mz: 2.7.0
       pirates: 4.0.7
@@ -12352,7 +12355,7 @@ snapshots:
       debug: 4.4.0
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 5.4.20(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0)
+      vite: 5.4.21(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -12364,7 +12367,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.4.20(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0):
+  vite@5.4.21(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0):
     dependencies:
       esbuild: 0.25.3
       postcss: 8.5.3
@@ -12378,7 +12381,7 @@ snapshots:
   vitest@3.1.2(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0):
     dependencies:
       '@vitest/expect': 3.1.2
-      '@vitest/mocker': 3.1.2(vite@5.4.20(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0))
+      '@vitest/mocker': 3.1.2(vite@5.4.21(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0))
       '@vitest/pretty-format': 3.1.2
       '@vitest/runner': 3.1.2
       '@vitest/snapshot': 3.1.2
@@ -12395,7 +12398,7 @@ snapshots:
       tinyglobby: 0.2.13
       tinypool: 1.0.2
       tinyrainbow: 2.0.0
-      vite: 5.4.20(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0)
+      vite: 5.4.21(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0)
       vite-node: 3.1.2(@types/node@22.14.1)(lightningcss@1.27.0)(terser@5.39.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
