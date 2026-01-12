@@ -56,9 +56,9 @@
   },
   "peerDependencies": {
     "@react-native-async-storage/async-storage": "^1.23.1",
-    "expo-crypto": "^14.0.2",
-    "expo-secure-store": "^14.0.1",
-    "expo-web-browser": "^14.0.2",
+    "expo-crypto": ">=14.0.2 <16",
+    "expo-secure-store": ">=14.0.1 <16",
+    "expo-web-browser": ">=14.0.2 <16",
     "react-native": ">=0.76.0 <1"
   }
 }
