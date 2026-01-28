@@ -1,7 +1,7 @@
 {
   "name": "@logto/rn-sample",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "scripts": {
     "dev": "expo start",
@@ -12,28 +12,28 @@
     "ios": "expo run:ios"
   },
   "dependencies": {
-    "@expo/metro-runtime": "^4.0.1",
+    "@expo/metro-runtime": "^6.1.2",
     "@logto/rn": "workspace:^",
-    "@react-native-async-storage/async-storage": "~1.23.1",
-    "expo": "~52.0.37",
-    "expo-crypto": "^14.0.2",
-    "expo-secure-store": "^14.0.1",
-    "expo-status-bar": "~2.0.1",
-    "expo-web-browser": "^14.0.2",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-native": "~0.76.7",
-    "react-native-web": "~0.19.13"
+    "@react-native-async-storage/async-storage": "~2.2.0",
+    "expo": "~54.0.32",
+    "expo-crypto": "^15.0.8",
+    "expo-secure-store": "^15.0.8",
+    "expo-status-bar": "~3.0.9",
+    "expo-web-browser": "^15.0.10",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "~0.81.5",
+    "react-native-web": "~0.21.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@silverhand/eslint-config": "^6.0.1",
     "@silverhand/eslint-config-react": "^6.0.2",
-    "@types/react": "~18.3.0",
+    "@types/react": "~19.1.17",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "stylelint": "^15.0.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.9.3"
   },
   "eslintConfig": {
     "extends": "@silverhand/react"
