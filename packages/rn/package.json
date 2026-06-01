@@ -42,7 +42,7 @@
     "prettier": "^3.5.3",
     "stylelint": "^16.18.0",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.1",
+    "vitest": "^4.1.0",
     "react-native": "^0.81.5",
     "expo-crypto": "^15.0.8",
     "expo-secure-store": "^15.0.8",
