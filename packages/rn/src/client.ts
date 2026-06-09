@@ -17,6 +17,10 @@ import { generateCodeChallenge, generateRandomString } from './utils';
 
 const issuedAtTimeTolerance = 300; // 5 minutes
 
+// On web, the sign-in window is opened by name so a pre-opened blank popup can be reused.
+// See `signIn` below for why this is needed.
+const webAuthWindowName = 'logtoAuth';
+
 export type LogtoNativeConfig = LogtoConfig & {
   /**
    * The prompt to be used for the authentication request. This can be used to skip the login or
@@ -37,11 +41,26 @@ export type LogtoNativeConfig = LogtoConfig & {
    * @default true
    */
   preferEphemeralSession?: boolean;
+  /**
+   * **Only for web**
+   *
+   * On web, the sign-in flow opens the authorization window via `window.open`. Because the URL is
+   * only known after async work (OIDC discovery, PKCE), Safari and Firefox no longer treat the call
+   * as user-initiated and block it as a popup. To work around this, the SDK opens a blank window
+   * synchronously when sign-in starts and reuses it for the authorization request.
+   *
+   * Set this to `true` to opt out of the workaround and fall back to opening the window directly,
+   * e.g. if it conflicts with your own popup handling. Has no effect on native platforms.
+   *
+   * @default false
+   */
+  disableWebPopupWorkaround?: boolean;
 };
 
 export class LogtoClient extends StandardLogtoClient {
   authSessionResult?: WebBrowser.WebBrowserAuthSessionResult;
   protected storage: SecureStorage | BrowserStorage;
+  protected readonly webPopupWorkaroundEnabled: boolean;
 
   constructor(config: LogtoNativeConfig) {
     const storage =
@@ -50,6 +69,7 @@ export class LogtoClient extends StandardLogtoClient {
         : new SecureStorage(`logto.${config.appId}`);
 
     const requester = createRequester(fetch);
+    const webPopupWorkaroundEnabled = !(config.disableWebPopupWorkaround ?? false);
 
     super(
       { prompt: [Prompt.Consent], ...config },
@@ -62,6 +82,9 @@ export class LogtoClient extends StandardLogtoClient {
               this.authSessionResult = await WebBrowser.openAuthSessionAsync(url, redirectUri, {
                 preferEphemeralSession: config.preferEphemeralSession ?? true,
                 createTask: false,
+                // Reuse the popup pre-opened in `signIn` on web; `undefined` (the default) when the
+                // workaround is off, and ignored on native.
+                windowName: webPopupWorkaroundEnabled ? webAuthWindowName : undefined,
               });
               break;
             }
@@ -102,6 +125,7 @@ export class LogtoClient extends StandardLogtoClient {
     );
 
     this.storage = storage;
+    this.webPopupWorkaroundEnabled = webPopupWorkaroundEnabled;
   }
 
   /**
@@ -136,9 +160,28 @@ export class LogtoClient extends StandardLogtoClient {
     options: SignInOptions | string,
     interactionMode?: InteractionMode
   ): Promise<void> {
-    await (typeof options === 'string'
-      ? super.signIn(options, interactionMode)
-      : super.signIn(options));
+    const usePopupWorkaround = Platform.OS === 'web' && this.webPopupWorkaroundEnabled;
+
+    if (usePopupWorkaround) {
+      // `super.signIn` awaits OIDC config, PKCE and storage before opening the auth window, by
+      // which point the click's user activation is gone and Safari blocks the popup. Open a named
+      // blank window now, while the activation is still alive; `openAuthSessionAsync` later reuses
+      // it by name, which the browser treats as a navigation rather than a new popup.
+      await WebBrowser.openBrowserAsync('', { windowName: webAuthWindowName });
+    }
+
+    try {
+      await (typeof options === 'string'
+        ? super.signIn(options, interactionMode)
+        : super.signIn(options));
+    } catch (error: unknown) {
+      if (usePopupWorkaround) {
+        // Re-target the named window (empty URL doesn't navigate it) and close it, so a sign-in
+        // that fails before the auth window opens doesn't leave a blank popup behind.
+        window.open('', webAuthWindowName)?.close();
+      }
+      throw error;
+    }
 
     if (this.authSessionResult?.type !== 'success') {
       throw new LogtoNativeClientError('auth_session_failed');
