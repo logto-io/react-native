@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -37,16 +37,16 @@
     "@silverhand/eslint-config-react": "^6.0.2",
     "@silverhand/ts-config": "^6.0.0",
     "@silverhand/ts-config-react": "^6.0.0",
-    "@types/react": "~19.1.17",
+    "@types/react": "~19.2.0",
     "eslint": "^8.57.0",
     "prettier": "^3.5.3",
     "stylelint": "^16.18.0",
     "typescript": "^5.8.3",
     "vitest": "^3.1.1",
-    "react-native": "^0.81.5",
-    "expo-crypto": "^15.0.8",
-    "expo-secure-store": "^15.0.8",
-    "expo-web-browser": "^15.0.10",
+    "react-native": "^0.85.3",
+    "expo-crypto": "^56.0.4",
+    "expo-secure-store": "^56.0.4",
+    "expo-web-browser": "^56.0.5",
     "@react-native-async-storage/async-storage": "~2.2.0"
   },
   "eslintConfig": {
@@ -61,9 +61,9 @@
   },
   "peerDependencies": {
     "@react-native-async-storage/async-storage": ">=1.23.1 <3",
-    "expo-crypto": ">=14.0.2 <16",
-    "expo-secure-store": ">=14.0.1 <16",
-    "expo-web-browser": ">=14.0.2 <16",
+    "expo-crypto": ">=14.0.2 <57",
+    "expo-secure-store": ">=14.0.1 <57",
+    "expo-web-browser": ">=14.0.2 <57",
     "react-native": ">=0.76.0 <1"
   }
 }
