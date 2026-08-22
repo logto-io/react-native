@@ -1,6 +1,10 @@
 <p align="center">
   <a href="https://logto.io" target="_blank" align="center" alt="Logto Logo">
-    <img src="https://github.com/logto-io/logto/raw/master/logo.png" height="100">
+    <picture>
+      <source width="200" media="(prefers-color-scheme: dark)" srcset="https://github.com/logto-io/.github/raw/master/profile/logto-lockup-brand-on-dark.svg">
+      <source width="200" media="(prefers-color-scheme: light)" srcset="https://github.com/logto-io/.github/raw/master/profile/logto-lockup-brand-on-light.svg">
+      <img width="200" src="https://github.com/logto-io/.github/raw/master/profile/logto-lockup-brand-on-light.svg" alt="Logto logo">
+    </picture>
   </a>
 </p>
 
